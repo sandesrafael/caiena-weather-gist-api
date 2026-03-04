@@ -3,4 +3,5 @@ uvicorn[standard]>=0.30.0
 pydantic-settings>=2.5.0
 PyGithub>=2.4.0
 python-dotenv>=1.0.1
-openweather-sdk @ git+https://github.com/sandesrafael/caiena-openweather-sdk.git@dev
+openweather-sdk @ https://github.com/sandesrafael/caiena-openweather-sdk/archive/refs/tags/v0.2.0.tar.gz
+httpx>=0.27.0

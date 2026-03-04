@@ -1,21 +1,54 @@
 # Weather Gist API - Desafio Caiena
 
-API que recebe uma cidade e publica automaticamente um comentário em um Gist com temperatura atual + média dos próximos 5 dias.
+## Pre-requisitos
 
-## Pré-requisitos
-1. Chave OpenWeatherMap (gratuita)
-2. Token clássico do GitHub com escopo **gist**
-3. Um Gist criado (pode ser vazio) → copie o ID da URL (ex: `1a2b3c4d5e6f...`)
+- Python 3.10+
+- [uv](https://docs.astral.sh/uv/) instalado
+- Chave de API do [OpenWeatherMap](https://openweathermap.org/api)
+- Token classico do GitHub com escopo `gist`
+- Um Gist criado (pode ser vazio) — copie o ID da URL
 
-## Configuração
+## Configuracao
+
 ```bash
-# 1. Instale o SDK primeiro (do outro repo)
-cd ../caiena-openweather-sdk
-pip install -e .
+# 1. Crie o ambiente virtual
+uv venv
 
-# 2. Volte para a API
-cd ../caiena-weather-gist-api
-pip install -r requirements.txt
+# 2. Instale dependencias
+uv pip install -r requirements.txt
 
-# 3. Configure .env
+# 3. Configure variaveis de ambiente
 cp .env.example .env
+```
+
+Edite o `.env` com suas chaves:
+
+```env
+OPENWEATHER_API_KEY=sua_chave_aqui
+GITHUB_TOKEN=seu_token_classico_aqui
+GIST_ID=id_do_gist_aqui
+```
+
+> O SDK e instalado automaticamente via `requirements.txt` (`git+https`).
+> Nao e necessario clonar o repositorio do SDK.
+
+## Execucao local
+
+```bash
+uv run uvicorn app.main:app --reload
+```
+
+- API: `http://localhost:8000`
+- Docs interativa: `http://localhost:8000/docs`
+
+## Execucao com Docker Compose
+
+```bash
+docker-compose up --build
+```
+
+## Testes
+
+```bash
+uv run pytest
+```
